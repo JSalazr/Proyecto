@@ -1,0 +1,28 @@
+<h1>Nuevo Comment</h1>
+
+<div>
+	<%= render partial: "shared/errors", locals: { obj: @comment } %>
+
+	<%= form_for [@campaign, @comment] do |f| %>
+		<% if current_user %>
+		<p>
+			<%= f.hidden_field :autor, value: User.find(current_user.id).name %>
+		</p>
+		<% else %>
+		<p>
+			<%= f.label :autor, "Autor" %>
+			<%= f.text_field :autor %>
+		</p>
+		<% end %>
+
+		<p>
+      <%= f.label :mensaje, "Descripcion" %>
+      <%= f.text_area :mensaje %>
+    </p>
+    <p>
+		<p>
+			<%= f.submit "Agregar comment" , class:"btn btn-default btn-lg"%>
+			<%= link_to "Cancelar", @campaign , class:"btn btn-default btn-lg"%>
+		</p>
+	<% end %>
+</div>

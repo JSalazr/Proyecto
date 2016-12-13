@@ -1,0 +1,16 @@
+<% if campaign.comments.any? %>
+	<div>
+		<h2>Comments: </h2>
+		<table border="2">
+			<thead>
+				<th>ID</th>
+				<th>Nombre</th>
+			</thead>
+			<tbody>
+				<%= render campaign.comments.order("created_at DESC") %>
+			</tbody>
+		</table>
+	</div>
+<% else %>
+	<p><em>No hay categories.</em></p>
+<% end %>

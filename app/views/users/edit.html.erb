@@ -1,0 +1,33 @@
+<h1>Edit User</h1>
+<p> <em> Ingrese los datos necesarios: </em> </p>
+
+<% if @user.errors.any? %>
+  <div>
+    Por favor corrija los siguientes problemas:
+    <ul>
+      <% @user.errors.full_messages.each do |m| %>
+        <li>
+          <%= m %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :name, "Nombre Completo", class: "input-group"  %>
+    <%= f.text_field :name, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.label :email, class: "input-group"  %>
+    <%= f.text_field :email, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.submit "Update", class:"btn btn-default btn-lg" %>
+    <%= link_to "Cancelar", root_path, class:"btn btn-default btn-lg" %>
+  </p>
+
+<% end %>

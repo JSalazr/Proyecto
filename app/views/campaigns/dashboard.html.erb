@@ -1,0 +1,34 @@
+<h1>List of Campaigns</h1>
+
+<% if flash[:notice] %>
+	<div>
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
+<table border ="1" class="table table-hover">
+	<thead>
+		<tr>
+			<th>Titulo</th>
+			<th>Reseña</th>
+			<th>Categoria</th>
+			<th>Meta</th>
+			<th>Monto Donado</th>
+			<th>Creado En</th>
+			<th>Usuario Creador</th>
+		</tr>
+	</thead>
+	<tbody>
+			<%- @campaigns.each do |f| %>
+				<tr>
+					<td><%= link_to f.titulo, campaign_path(f) %></td>
+					<td><%= f.resena %></td>
+					<td><%= f.category %></td>
+					<td><%= f.meta %></td>
+					<td>Sumas</td>
+					<td><%= f.created_at %></td>
+					<td><%= User.find(f.user_id).name %></td>
+				</tr>
+			<%- end %>
+	</tbody>
+</table>

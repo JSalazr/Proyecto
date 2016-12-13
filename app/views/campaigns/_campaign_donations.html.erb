@@ -1,0 +1,21 @@
+<% if donations.any? %>
+	<div>
+		<h2>Donations: </h2>
+		<table border="2">
+			<thead>
+				<th>Autor</th>
+				<th>Monto Hecho</th>
+        <th>Mensaje</th>
+        <th>Fecha Creado</th>
+        <th>
+
+        </th>
+			</thead>
+			<tbody>
+				<%= render donations %>
+			</tbody>
+		</table>
+	</div>
+<% else %>
+	<p><em>No hay donations.</em></p>
+<% end %>

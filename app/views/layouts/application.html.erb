@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Let's GoGo</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+  <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <%= link_to "Home", root_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Campaigns", campaigns_path %>
+                    </li>
+                    <% if current_user %>
+                    <li>
+                      <%= link_to "Start a Campaign", new_campaign_path %>
+                    </li>
+
+                    <li>
+                      <%= link_to "My Dashboard", dashboard_path %>
+                    </li>
+
+                    <li>
+                      <%= link_to "Profile", profile_path %>
+                    </li>
+
+                    <li>
+                      <%= link_to "Log Out", logout_path, data: {method: :delete} %>
+                    </li>
+                    <% else%>
+                    <li>
+                      <%= link_to "Log In", login_path %>
+                    </li>
+                    <li>
+                      <%= link_to "Sign Up", signup_path %>
+                    </li>
+                    <%end%>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+  <div align= "center">
+    <%= yield %>
+  </div>
+
+
+    <footer>
+        <div class="container text-center">
+            <p> Jonathan & Edgar, Experiencia de Usuario 2016</p>
+        </div>
+    </footer>
+</body>
+</html>

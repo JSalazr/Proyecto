@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  string: 
+  string: 
+  text: 
+  text: 
+  text: 
+  receive_email: false
+
+two:
+  string: 
+  string: 
+  text: 
+  text: 
+  text: 
+  receive_email: false

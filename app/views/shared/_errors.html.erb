@@ -1,0 +1,11 @@
+<%- if obj.errors.any? %>
+	<div>
+		Por favor corrija los siguientes problemas:
+		<ul>
+			<%- obj.errors.full_messages.each do |msg| %>
+
+				<li><%= msg %></li>
+			<%- end %>
+		</ul>
+	</div>
+<% end %>

@@ -1,0 +1,86 @@
+
+<h1>Listing campaign with Id <%=@campaign.id %></h1>
+<% if flash[:notice] %>
+  <div style="background: yellow">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<ul class="list-group" >
+  <li>
+    ID:
+    <strong><%= @campaign.id %></strong>
+  </li>
+  <li>
+    <%= image_tag @campaign.image %>
+  </li>
+	<li>
+		Titulo:
+		<strong><%= @campaign.titulo %></strong>
+	</li>
+	<li>
+		Description:
+		<strong><%= @campaign.description %></strong>
+	</li>
+  <li>
+    Meta:
+    <strong><%= @campaign.meta %></strong>
+  </li>
+  <li>
+    Category:
+    <strong><%= @campaign.category %></strong>
+  </li>
+  <li>
+    Cantidad de Likes:
+    <strong><%= @campaign.cant_like %></strong>
+  </li>
+  <li>
+    Fecha culminacion:
+    <strong><%= @campaign.finalizado_en %></strong>
+  </li>
+  <li>
+    Fecha creacion:
+    <strong><%= @campaign.created_at %></strong>
+  </li>
+</ul>
+
+<p>
+  Comentarios
+</p>
+<table border ="1" class="table table-hover">
+	<thead>
+		<tr>
+			<th>Autor</th>
+			<th>Mensaje</th>
+			<th>Fecha Creacion</th>
+      <th>
+
+      </th>
+		</tr>
+	</thead>
+	<tbody>
+			<%- @campaign.comments.each do |f| %>
+				<tr>
+					<td><%= f.autor %></td>
+					<td><%= f.mensaje %></td>
+					<td><%= f.created_at %></td>
+          <% if current_user %>
+              <% if current_user == User.find_by(name: f.autor) %>
+					       <td><%= link_to "Borrar", campaign_comment_path(f.campaign, f), method: :delete, data: {confirm: "Estas Seguro?"} %></td>
+              <% end %>
+          <% end %>
+				</tr>
+			<%- end %>
+	</tbody>
+</table>
+
+<p> <%= link_to "New Comment", new_campaign_comment_path(@campaign.id), class:"btn btn-default btn-lg" %> </p>
+
+<%= render partial: "campaign_donations", locals: {donations: @campaign.donations.order("created_at DESC")} %>
+
+<p> <%= link_to "New Donation", new_campaign_donation_path(@campaign.id), class:"btn btn-default btn-lg" %> </p>
+
+<% if current_user %>
+  <% if current_user.id == @campaign.user_id %>
+    <p> <%= link_to "Edit", edit_campaign_path, class:"btn btn-default btn-lg" %> </p>
+  <% end %>
+<% end %>
