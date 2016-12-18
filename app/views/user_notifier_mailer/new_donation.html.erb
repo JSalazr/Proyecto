@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.name %>, Ha recibido una nueva donacion en <%= @campaign.titulo %></h1>
+    <p>
+      La donacion es de Lps. <%= @donation.monto %>
+    </p>
+    <p><%= link_to "Haga click aqui para verlo!", campaign_path(@campaign) %></p>
+  </body>
+</html>

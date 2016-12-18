@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get "/campaigns/dashboard", to: "campaigns#dashboard", as: "dashboard"
 
-
     resources :campaigns do
       resources :comments
       resources :donations

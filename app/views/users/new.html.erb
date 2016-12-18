@@ -36,6 +36,11 @@
   </p>
 
   <p>
+    <%= f.label :receive_email, "Recibir Correos?" %>
+    <%= f.check_box :receive_email, {}, true, false %>
+  </p>
+
+  <p>
     <%= f.submit "Crear", class:"btn btn-default btn-lg" %>
     <%= link_to "Cancelar", root_path, class:"btn btn-default btn-lg" %>
   </p>

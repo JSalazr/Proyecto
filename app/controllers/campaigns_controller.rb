@@ -5,6 +5,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @user = User.find_by(id: @campaign.user_id)
   end
 
   def new
@@ -16,6 +17,7 @@ class CampaignsController < ApplicationController
     @campaign.user_id = current_user.id
 
     if @campaign.save
+      UserNotifier.campaign_create(current_user).deliver
       redirect_to dashboard_path, notice: "Se agrego exitosamente."
     else
       render :new
@@ -30,6 +32,9 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
 
     if @campaign.update_attributes(campaign_params)
+      if current_user.receive_email
+        UserNotifier.campaign_edit(current_user).deliver
+      end
       redirect_to campaign_path(@campaign),  notice: "Se edito con exito."
     else
       render :edit

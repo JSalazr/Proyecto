@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def login(user)
   	session[:user_id] = user.id
-  	redirect_to root_path
+  	redirect_to profile_path
   end
 
   def logout

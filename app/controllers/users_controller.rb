@@ -8,6 +8,7 @@ def create
   @user.receive_email=true
 
   if @user.save
+    UserNotifier.signup_email(@user).deliver
     redirect_to root_path, notice: "Se agrego exitosamente."
   else
     render :new
@@ -18,10 +19,15 @@ def edit
   @user = current_user
 end
 
+def password
+  @user = current_user
+end
+
 def update
   @user = current_user
 
   if @user.update_attributes(user_params)
+    UserNotifier.password_edit(@user).deliver
     redirect_to profile_path
   else
     render :edit

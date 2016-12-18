@@ -1,2 +1,95 @@
-<h1> Your  Center</h1>
-<p>Manage your digital friends</p>
+<h1></h1>
+
+<% if @campaigns.any? %>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 600px; float: center;">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <% if @campaigns[1] %>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      <% end %>
+      <% if @campaigns[2] %>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      <% end %>
+      <% if @campaigns[3] %>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      <% end %>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="<%= @campaigns[0].image %>" height="400px" width="400px">
+        <div class="carousel-caption">
+          <div style="background-color: rgba(39, 55, 70, 0.7); border-radius: 25px;">
+            <h3 style= "font-family: Fjalla One, sans-serif; padding-top: 5px"><%= link_to @campaigns[0].titulo, campaign_path(@campaigns[0]), {:style => 'color:  #64A300;'}%></h3>
+            <p style= "font-family: Roboto Condensed, sans-serif; font-size: 15px"><%= @campaigns[0].category %> • Meta: Lps. <%= @campaigns[0].meta %> Recaudado: Lps. <%= cant_recuadada(@campaigns[0].donations) %></p>
+          </div>
+        </div>
+      </div>
+
+      <% if @campaigns[1] %>
+      <div class="item">
+        <img src="<%= @campaigns[1].image %>" height="400px" width="400px">
+        <div class="carousel-caption">
+          <div style="background-color: rgba(39, 55, 70, 0.7); border-radius: 25px;">
+            <h3 style= "font-family: Fjalla One, sans-serif; padding-top: 5px"><%= link_to @campaigns[1].titulo, campaign_path(@campaigns[1]), {:style => 'color:  #64A300;'}%></h3>
+            <p style= "font-family: Roboto Condensed, sans-serif; font-size: 15px"><%= @campaigns[1].category %> • Meta: Lps. <%= @campaigns[1].meta %> Recaudado: Lps. <%= cant_recuadada(@campaigns[1].donations) %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @campaigns[2] %>
+      <div class="item">
+        <img src="<%= @campaigns[2].image %>" height="400px" width="400px">
+        <div class="carousel-caption">
+          <div style="background-color: rgba(39, 55, 70, 0.7); border-radius: 25px;">
+            <h3 style= "font-family: Fjalla One, sans-serif; padding-top: 5px"><%= link_to @campaigns[2].titulo, campaign_path(@campaigns[2]), {:style => 'color:  #64A300;'}%></h3>
+            <p style= "font-family: Roboto Condensed, sans-serif; font-size: 15px"><%= @campaigns[2].category %> • Meta: Lps. <%= @campaigns[2].meta %> Recaudado: Lps. <%= cant_recuadada(@campaigns[2].donations) %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @campaigns[3] %>
+      <div class="item">
+        <img src="<%= @campaigns[3].image %>" height="400px" width="400px">
+        <div class="carousel-caption">
+          <div style="background-color: rgba(39, 55, 70, 0.7); border-radius: 25px;">
+            <h3 style= "font-family: Fjalla One, sans-serif; padding-top: 5px"><%= link_to @campaigns[3].titulo, campaign_path(@campaigns[3]), {:style => 'color:  #64A300;'}%></h3>
+            <p style= "font-family: Roboto Condensed, sans-serif; font-size: 15px"><%= @campaigns[3].category %> • Meta: Lps. <%= @campaigns[3].meta %> Recaudado: Lps. <%= cant_recuadada(@campaigns[3].donations) %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+<% end %>
+
+<div style= "float: center; padding-right: 100px" >
+  <%= link_to category_path("Salud") do %>
+    <%= image_tag "salud.png", style: "heigth: 400px; width: 400px; padding-bottom: 10px; display:inline-block" %>
+  <% end %>
+  <%= link_to category_path("Educacion") do %>
+    <%= image_tag "educacion.png", style: "heigth: 280px; width: 280px; padding-bottom: 10px; display:inline-block" %>
+  <% end %>
+  <%= link_to category_path("Recreacion") do %>
+    <%= image_tag "recreacion.png", style: "heigth: 340px; width: 340px; padding-bottom: 10px; padding-left: 50px; display:inline-block" %>
+  <% end %>
+  <%= link_to category_path("Religion") do %>
+    <%= image_tag "religion.png", style: "heigth: 300px; width: 300px; padding-bottom: 10px; padding-left: 10px; display:inline-block" %>
+  <% end %>
+  <%= link_to category_path("Viaje") do %>
+    <%= image_tag "viaje.png", style: "heigth: 300px; width: 300px; padding-bottom: 10px; padding-left: 20px; display:inline-block" %>
+  <% end %>
+</div>

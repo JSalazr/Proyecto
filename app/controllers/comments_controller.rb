@@ -7,8 +7,12 @@ class CommentsController < ApplicationController
 def create
   @campaign = Campaign.find(params[:campaign_id])
   @comment = @campaign.comments.build(comments_params)
+  @user = User.find_by(id: @campaign.user_id)
 
   if @comment.save
+    if @user.receive_email
+      UserNotifier.new_comment(@user).deliver
+    end
     redirect_to @campaign,  notice: "Se agrego con exito"
   else
     render :new

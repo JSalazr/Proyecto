@@ -6,47 +6,47 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="page-top" data-spy="scroll" data-target=".navbar-full">
 
 
   <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <nav class="navbar  navbar-full navbar-light" style="background-color: #00263D" role="navigation">
         <div class="container">
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" style= "float: right">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
+                    <li class="navbar-brand" style= "float: left">
+                        <a href="#page-top" style= "color: #64A300; font-size: 30px; font-family: Anton, sans-serif;">Hola</a>
                     </li>
                     <li>
-                        <%= link_to "Home", root_path %>
+                        <%= link_to "Home", root_path, {:style => 'color: #64A300; font-size: 30px; font-family: Anton, sans-serif;'} %>
                     </li>
                     <li>
-                        <%= link_to "Campaigns", campaigns_path %>
+                        <%= link_to "Campaigns", campaigns_path, {:style => 'color: #64A300; font-size: 30px; font-family: Anton, sans-serif;'} %>
                     </li>
                     <% if current_user %>
                     <li>
-                      <%= link_to "Start a Campaign", new_campaign_path %>
+                      <%= link_to "Start a Campaign", new_campaign_path, {:style => 'color: #64A300; font-size: 30px; font-family: Anton, sans-serif;'} %>
                     </li>
 
                     <li>
-                      <%= link_to "My Dashboard", dashboard_path %>
+                      <%= link_to "My Dashboard", dashboard_path, {:style => 'color: #64A300; font-size: 30px; font-family: Anton, sans-serif;'} %>
                     </li>
 
                     <li>
-                      <%= link_to "Profile", profile_path %>
+                      <%= link_to "Profile", profile_path, {:style => 'color: #64A300; font-size: 30px; font-family: Anton, sans-serif;'} %>
                     </li>
 
                     <li>
-                      <%= link_to "Log Out", logout_path, data: {method: :delete} %>
+                      <%= link_to "Log Out", logout_path, {data: {method: :delete}, :style => 'color: #64A300; font-size: 30px; font-family: Anton, sans-serif;'} %>
                     </li>
                     <% else%>
                     <li>
-                      <%= link_to "Log In", login_path %>
+                      <%= link_to "Log In", login_path, {:style => 'color: #64A300; font-size: 30px; font-family: Anton, sans-serif;'} %>
                     </li>
                     <li>
-                      <%= link_to "Sign Up", signup_path %>
+                      <%= link_to "Sign Up", signup_path, {:style => 'color: #64A300; font-size: 30px; font-family: Anton, sans-serif;'} %>
                     </li>
                     <%end%>
                 </ul>

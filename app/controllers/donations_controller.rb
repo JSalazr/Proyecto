@@ -8,8 +8,14 @@ class DonationsController < ApplicationController
 def create
   @campaign = Campaign.find(params[:campaign_id])
   @donation = @campaign.donations.build(donations_params)
+  @user = User.find_by(id: @campaign.user_id)
+
+
 
   if @donation.save
+    if @user.receive_email
+      UserNotifier.new_donation(@user).deliver
+    end
     redirect_to @campaign,  notice: "Se agrego con exito"
   else
     render :new

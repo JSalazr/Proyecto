@@ -1,52 +1,68 @@
 
-<h1>Listing campaign with Id <%=@campaign.id %></h1>
+<h1 style= "font-family: Fjalla One, sans-serif; font-size: 50px; padding-bottom: 30px"><%=@campaign.titulo %></h1>
 <% if flash[:notice] %>
   <div style="background: yellow">
     <%= flash[:notice] %>
   </div>
 <% end %>
-<ul class="list-group" >
-  <li>
-    ID:
-    <strong><%= @campaign.id %></strong>
-  </li>
-  <li>
-    <%= image_tag @campaign.image %>
-  </li>
-	<li>
-		Titulo:
-		<strong><%= @campaign.titulo %></strong>
-	</li>
+
+<div style= "float: right; padding-right: 200px" >
+  <%= image_tag @campaign.image, style: "heigth: 400px; width: 400px; padding-bottom: 10px" %>
+
+
+  <div class="progress" style="width: 400px;">
+    <div class="progress-bar" role="progressbar" aria-valuenow= "<%=porciento_completado(@campaign) * 100 %>"
+    aria-valuemin="0" aria-valuemax="100" style="width: <%=porciento_completado(@campaign) * 100 %>%">
+      <%= porciento_completado(@campaign) * 100 %>% Completado
+    </div>
+
+
+  </div>
+
+  <div style= "font-family: Roboto Condensed, sans-serif; font-size: 20px; border-radius: 25px; border: solid black 2px; ">
+    <p>
+      <%=@user.name %>
+    </p>
+    <p>
+      <%=@user.ciudad %>, <%=@user.pais %>
+    </p>
+    <p>
+      <%= mail_to @user.email, "Enviar correo" %>
+    </p>
+  </div>
+</div>
+
+<ul class="list-group" style= "font-family: Fjalla One, sans-serif; font-size: 25px">
 	<li>
 		Description:
-		<strong><%= @campaign.description %></strong>
+		<light style= "font-family: Roboto Condensed, sans-serif"><%= @campaign.description %></light>
 	</li>
   <li>
     Meta:
-    <strong><%= @campaign.meta %></strong>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= @campaign.meta %></light>
   </li>
   <li>
     Category:
-    <strong><%= @campaign.category %></strong>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= link_to @campaign.category, category_path(@campaign.category) %></light>
   </li>
   <li>
     Cantidad de Likes:
-    <strong><%= @campaign.cant_like %></strong>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= @campaign.cant_like %></light>
   </li>
   <li>
     Fecha culminacion:
-    <strong><%= @campaign.finalizado_en %></strong>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= @campaign.finalizado_en %></light>
   </li>
   <li>
     Fecha creacion:
-    <strong><%= @campaign.created_at %></strong>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= @campaign.created_at %></light>
   </li>
 </ul>
 
 <p>
   Comentarios
 </p>
-<table border ="1" class="table table-hover">
+<table border ="1" class="table table-hover" style=" width: 500px">
 	<thead>
 		<tr>
 			<th>Autor</th>
