@@ -91,7 +91,7 @@
 	</tbody>
 </table>
 <% else %>
-  <p><em>No hay donations.</em></p>
+  <p><em>No hay comentarios.</em></p>
 <% end %>
 
 <%= render partial: "campaign_donations", locals: {donations: @campaign.donations.order("created_at DESC")} %>

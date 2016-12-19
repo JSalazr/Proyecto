@@ -17,6 +17,7 @@ class CampaignsController < ApplicationController
   def create
     @campaign = Campaign.new(campaign_params)
     @campaign.user_id = current_user.id
+    @campaign.cant_like = 0
 
     if @campaign.save
       UserNotifierMailer.campaign_create(current_user, @campaign).deliver

@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-full">
+<body id="page-top" data-spy="scroll" data-target=".navbar-full" style="background: linear-gradient(#FFFFFF, #ECF0F1);">
 
 
   <!-- Navigation -->
@@ -48,14 +48,14 @@
     </nav>
 
 
-  <div align= "center" style="background: linear-gradient(#FFFFFF, #ECF0F1);">
+  <div align= "center">
     <%= yield %>
   </div>
 
 
     <footer>
         <div class="container text-center">
-            <p> Jonathan & Edgar, Experiencia de Usuario 2016</p>
+            <p style= "font-family: Roboto Condensed, sans-serif; font-size: 25px"> Jonathan & Edgar, Experiencia de Usuario 2016</p>
         </div>
     </footer>
 </body>
