@@ -1,4 +1,4 @@
-<h1>New User</h1>
+<h1 style="font-size: 30px; font-family: Anton, sans-serif; color: #64A300" >New User</h1>
 <p> <em> Ingrese los datos necesarios: </em> </p>
 
 <% if @user.errors.any? %>
@@ -14,35 +14,38 @@
   </div>
 <% end %>
 
-<%= form_for @user do |f| %>
-  <p>
-    <%= f.label :name, "Nombre Completo", class: "input-group"  %>
-    <%= f.text_field :name, class: "form-control" %>
-  </p>
 
-  <p>
-    <%= f.label :email, class: "input-group"  %>
-    <%= f.text_field :email, class: "form-control" %>
-  </p>
+<div style="width: 500px">
+  <%= form_for @user do |f| %>
+    <p>
+      <%= f.label :name, "Nombre Completo", class: "input-group"  %>
+      <%= f.text_field :name, class: "form-control" %>
+    </p>
 
-  <p>
-    <%= f.label :password, "Password", class: "input-group"%>
-    <%= f.password_field :password, class: "form-control"%>
-  </p>
+    <p>
+      <%= f.label :email, class: "input-group"  %>
+      <%= f.text_field :email, class: "form-control" %>
+    </p>
 
-  <p>
-    <%= f.label :password_confirmation, "Ingrese la password de nuevo", class: "input-group"%>
-    <%= f.password_field :password_confirmation, class: "form-control"%>
-  </p>
+    <p>
+      <%= f.label :password, "Password", class: "input-group"%>
+      <%= f.password_field :password, class: "form-control"%>
+    </p>
 
-  <p>
-    <%= f.label :receive_email, "Recibir Correos?" %>
-    <%= f.check_box :receive_email, {}, true, false %>
-  </p>
+    <p>
+      <%= f.label :password_confirmation, "Ingrese la password de nuevo", class: "input-group"%>
+      <%= f.password_field :password_confirmation, class: "form-control"%>
+    </p>
 
-  <p>
-    <%= f.submit "Crear", class:"btn btn-default btn-lg" %>
-    <%= link_to "Cancelar", root_path, class:"btn btn-default btn-lg" %>
-  </p>
+    <p>
+      <%= f.label :receive_email, "Recibir Correos?" %>
+      <%= f.check_box :receive_email, {}, true, false %>
+    </p>
 
-<% end %>
+    <p>
+      <%= f.submit "Crear", class:"btn btn-default btn-lg" %>
+      <%= link_to "Cancelar", root_path, class:"btn btn-default btn-lg" %>
+    </p>
+
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h1 style="font-size: 30px; font-family: Anton, sans-serif; color: #64A300" >Login</h1>
 <p>Ingrese sus credenciales:</p>
 
 <% if flash[:error] %>
@@ -7,20 +7,22 @@
 	</div>
 <% end %>
 
-<%= form_for :session, url: login_path do |f| %>
-	<div class="form-group">
-	<%= f.label :email %>
-	<%= f.email_field :email, class: "form-control" %>
-	</div>
+<div style="width:500px">
+	<%= form_for :session, url: login_path do |f| %>
+		<div class="form-group">
+		<%= f.label :email %>
+		<%= f.email_field :email, class: "form-control" %>
+		</div>
 
-	<div class="form-group">
-		<%= f.label :password %>
-		<%= f.password_field :password, class: "form-control" %>
-	</div>
-	<div class="btn-group">
-		<%= button_tag type: "submit", class: "btn btn-default btn-lg" do %>
-			<span class="fa fa-sign-in"></span>
-			Login
-		<% end %>
-	</div>
-<% end %>
+		<div class="form-group">
+			<%= f.label :password %>
+			<%= f.password_field :password, class: "form-control" %>
+		</div>
+		<div class="btn-group">
+			<%= button_tag type: "submit", class: "btn btn-default btn-lg" do %>
+				<span class="fa fa-sign-in"></span>
+				Login
+			<% end %>
+		</div>
+	<% end %>
+</div>

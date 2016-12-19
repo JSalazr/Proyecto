@@ -1,4 +1,4 @@
-<h1>List of Campaigns</h1>
+<h1 style="font-size: 30px; font-family: Anton, sans-serif; color: #64A300" >My Dashboard</h1>
 
 <% if flash[:notice] %>
 	<div>
@@ -6,7 +6,7 @@
 	</div>
 <% end %>
 
-<table border ="1" class="table table-hover">
+<table class="table table-hover" style="width:1000px">
 	<thead>
 		<tr>
 			<th>Titulo</th>
@@ -25,8 +25,8 @@
 					<td><%= f.resena %></td>
 					<td><%= f.category %></td>
 					<td><%= f.meta %></td>
-					<td>Sumas</td>
-					<td><%= f.created_at %></td>
+					<td> Lps. <%= cant_recuadada(f.donations) %></td>
+					<td><%= format_date(f.created_at) %></td>
 					<td><%= User.find(f.user_id).name %></td>
 				</tr>
 			<%- end %>

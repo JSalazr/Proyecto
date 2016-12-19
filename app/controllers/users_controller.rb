@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate, only: [:new, :create]
+
   def new
+  authenticate_logeado
   @user = User.new
 end
 
@@ -8,7 +11,8 @@ def create
   @user.receive_email=true
 
   if @user.save
-    UserNotifier.signup_email(@user).deliver
+    UserNotifierMailer.signup_email(@user).deliver
+    login(@user)
     redirect_to root_path, notice: "Se agrego exitosamente."
   else
     render :new
@@ -27,7 +31,7 @@ def update
   @user = current_user
 
   if @user.update_attributes(user_params)
-    UserNotifier.password_edit(@user).deliver
+    UserNotifierMailer.password_edit(@user).deliver
     redirect_to profile_path
   else
     render :edit

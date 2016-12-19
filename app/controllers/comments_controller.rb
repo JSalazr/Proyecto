@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  skip_before_action :authenticate, only: [:new, :create]
+
   def new
   @campaign = Campaign.find(params[:campaign_id])
   @comment = @campaign.comments.build
@@ -11,7 +13,7 @@ def create
 
   if @comment.save
     if @user.receive_email
-      UserNotifier.new_comment(@user).deliver
+      UserNotifierMailer.new_comment(@user, @comment, @campaign).deliver
     end
     redirect_to @campaign,  notice: "Se agrego con exito"
   else

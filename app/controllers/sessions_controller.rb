@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate, only: [:new, :create]
+
   def new
     if current_user
       redirect_to root_path
@@ -6,6 +8,8 @@ class SessionsController < ApplicationController
   end
 
   def create
+    authenticate_logeado
+
     email = params[:session][:email]
     password = params[:session][:password]
 
@@ -23,6 +27,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout
+    if current_user
+      logout
+    else
+      redirect_to login_path
+    end
   end
+  
 end

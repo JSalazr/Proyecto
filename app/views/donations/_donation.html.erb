@@ -1,6 +1,6 @@
 <tr>
 	<td><%= donation.autor %> </td>
-	<td><%= donation.monto %> </td>
+	<td> Lps. <%= donation.monto %> </td>
 	<td><%= donation.mensaje %> </td>
-	<td><%= donation.created_at %> </td>
+	<td><%= format_date(donation.created_at) %> </td>
 </tr>

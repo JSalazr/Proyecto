@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+  skip_before_action :authenticate, only: [:index, :show, :category]
+
   def index
     @campaigns = Campaign.active.order(:created_at)
   end
@@ -17,7 +19,7 @@ class CampaignsController < ApplicationController
     @campaign.user_id = current_user.id
 
     if @campaign.save
-      UserNotifier.campaign_create(current_user).deliver
+      UserNotifierMailer.campaign_create(current_user, @campaign).deliver
       redirect_to dashboard_path, notice: "Se agrego exitosamente."
     else
       render :new
@@ -33,7 +35,7 @@ class CampaignsController < ApplicationController
 
     if @campaign.update_attributes(campaign_params)
       if current_user.receive_email
-        UserNotifier.campaign_edit(current_user).deliver
+        UserNotifierMailer.campaign_edit(current_user, @campaign).deliver
       end
       redirect_to campaign_path(@campaign),  notice: "Se edito con exito."
     else
@@ -49,6 +51,7 @@ class CampaignsController < ApplicationController
 
   def category
     @campaigns = Campaign.where(["category like ?", params[:category]])
+    @category = params[:category].to_s
   end
 
   def dashboard

@@ -1,4 +1,20 @@
-<h1>List of Campaigns</h1>
+<h1 style="font-size: 30px; font-family: Anton, sans-serif; color: #0064A3" >
+	<% if @category == "Salud" %>
+		Salud
+	<% end %>
+	<% if @category == "Educacion" %>
+		Educacion
+	<% end %>
+	<% if @category == "Recreacion" %>
+		Recreacion
+	<% end %>
+	<% if @category == "Religion" %>
+		Religion
+	<% end %>
+	<% if @category == "Viaje" %>
+		Viaje
+	<% end %>
+</h1>
 
 <% if flash[:notice] %>
 	<div>
@@ -6,7 +22,53 @@
 	</div>
 <% end %>
 
-<table border ="1" class="table table-hover">
+<div style="width: 600px; height: 180px; background: #64A300; border-radius: 25px; padding-bottom: 50px">
+		<div style="float: left; align: top">
+			<% if @category == "Salud" %>
+		    <%= image_tag "salud.png", style: "heigth: 200px; width: 200px; padding-bottom: 10px; display:inline-block" %>
+		  <% end %>
+		  <% if @category == "Educacion" %>
+		    <%= image_tag "educacion.png", style: "heigth: 165px; width: 165px; padding-top: 10px; padding-left: 5px; display:inline-block" %>
+		  <% end %>
+		  <% if @category == "Recreacion" %>
+		    <%= image_tag "recreacion.png", style: "heigth: 165px; width: 165px; padding-top: 10px; padding-left: 5px; display:inline-block" %>
+		  <% end %>
+		  <% if @category == "Religion" %>
+		    <%= image_tag "religion.png", style: "heigth: 170px; width: 170px; padding-left: 10px; padding-top: 10px; display:inline-block" %>
+		  <% end %>
+		  <% if @category == "Viaje" %>
+		    <%= image_tag "viaje.png", style: "heigth: 165px; width: 165px; padding-left: 5px; padding-top: 10px; display:inline-block" %>
+		  <% end %>
+		</div>
+
+			<% if @category == "Salud" %>
+			<p style="padding-top:20px; font-family: Roboto Condensed, sans-serif; font-size: 20px; padding-right: 20px;">
+				Buscar mantener un equilibrio en nuestro diario vivir deberia ser un objetivo constante en la vida de cada uno de nosotros. Cualquier camapaña que tenga como objetivo mejorar la salud de nuestros clientes es bienvenida en Let's GoGo.
+
+			<% end %>
+			<% if @category == "Educacion" %>
+				<p style="padding-top:10px; font-family: Roboto Condensed, sans-serif; font-size: 17px; padding-right: 20px;">
+					El saber es poder. En Let's Go Go motivamos a nuestros clientes a emprender un viaje buscando absorber la mayor cantidad de conocimientos y expandir sus barreras, para sobresalir en la sociedad como ningun otro. Un libro, una bibliografia de tu autor favorito incluso suscripciones para paginas que proveen tutoriales, crea tu campaña y crece junto a nosotros.
+				</p>
+			<% end %>
+			<% if @category == "Recreacion" %>
+				<p style="padding-top:20px; font-family: Roboto Condensed, sans-serif; font-size: 20px; padding-right: 20px;">
+					Una nueva consola, un instrumento, un nuevo calzado para practicar tu deporte favorito, en Let's GoGo apoyamos a todos para obtener sus deseos. Porque siempre es bueno buscar relajar nuestra mente y engrandecer nuestros talentos.
+				</p>
+			<% end %>
+			<% if @category == "Religion" %>
+				<p style="padding-top:30px; font-family: Roboto Condensed, sans-serif; font-size: 20px; padding-right: 20px;">
+					La espiritualidad de cada uno de nuestros clientes es importante, si deseas crear una campaña para cualquier religion y ayudar a tu comunidad este es el lugar perfecto para ti.
+				</p>
+			<% end %>
+			<% if @category == "Viaje" %>
+				<p style="padding-top:10px; font-family: Roboto Condensed, sans-serif; font-size: 20px; padding-right: 20px;">
+					Deseas emprender al otro lado del mundo? o simplemente conocer la ciudad de al lado? En Lets GoGo puedes buscar la ayuda que necesitas, Los Alpes, el Everest o Copan Ruinas, conoce al mundo y asi mismo descubrete a ti mismo. Un universo lleno de maravillas te esta esperando. Ve y buscalo.
+				</p>
+			<% end %>
+</div>
+
+<table class="table table-hover" style="width:1000px">
 	<thead>
 		<tr>
 			<th>Titulo</th>
@@ -25,8 +87,8 @@
 					<td><%= f.resena %></td>
 					<td><%= f.category %></td>
 					<td><%= f.meta %></td>
-					<td>Sumas</td>
-					<td><%= f.created_at %></td>
+					<td>Lps. <%= cant_recuadada(f.donations) %></td>
+					<td><%= format_date(f.created_at) %></td>
 					<td><%= User.find(f.user_id).name %></td>
 				</tr>
 			<%- end %>

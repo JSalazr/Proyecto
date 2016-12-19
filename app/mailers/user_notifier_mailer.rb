@@ -1,4 +1,7 @@
 class UserNotifierMailer < ApplicationMailer
+  include Rails.application.routes.url_helpers
+  include ActionView::Helpers::UrlHelper
+
   def signup_email(user)
     @user = user
     mail( :to => @user.email,

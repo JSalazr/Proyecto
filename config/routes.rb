@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get "/profile/edit" => "users#edit", as: "edit_profile"
   get "/profile/password" => "users#password", as: "password_profile"
 
+  get '/contact' => 'contact_us/contacts#new'
+  get '/contact/thanks' => 'contact_us/contacts#thanks'
+
   resources :users
 
 end

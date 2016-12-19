@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  skip_before_action :authenticate, only: [:new, :create]
 
   def new
   @campaign = Campaign.find(params[:campaign_id])
@@ -14,7 +15,7 @@ def create
 
   if @donation.save
     if @user.receive_email
-      UserNotifier.new_donation(@user).deliver
+      UserNotifierMailer.new_donation(@user, @donation, @campaign).deliver
     end
     redirect_to @campaign,  notice: "Se agrego con exito"
   else

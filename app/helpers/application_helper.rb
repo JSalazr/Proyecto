@@ -9,4 +9,9 @@ module ApplicationHelper
     return 0 unless donations.any?
     donations.sum(:monto)
   end
+
+  def format_date(fecha)
+  return nil unless fecha
+  fecha.strftime("%B %e, %Y")
+end
 end

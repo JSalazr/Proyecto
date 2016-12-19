@@ -1,38 +1,38 @@
 
-<h1>Listing User with Id <%=@current_user.id %></h1>
+<h1 style="font-size: 30px; font-family: Anton, sans-serif; color: #64A300" ><%=@current_user.name %></h1>
 <% if flash[:notice] %>
   <div style="background: yellow">
     <%= flash[:notice] %>
   </div>
 <% end %>
-<ul class="list-group" >
+<ul class="list-group" style= "font-family: Fjalla One, sans-serif; font-size: 25px">
   <li>
     ID:
-    <strong><%= @current_user.id %></strong>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= @current_user.id %></light>
   </li>
 	<li>
 		Nombre:
-		<strong><%= @current_user.name %></strong>
+		<light style= "font-family: Roboto Condensed, sans-serif"><%= @current_user.name %></light>
 	</li>
 	<li>
 		Correo:
-		<strong><%= @current_user.email %></strong>
+		<light style= "font-family: Roboto Condensed, sans-serif"><%= @current_user.email %></light>
 	</li>
   <li>
 		Ciudad:
-		<strong><%= @current_user.ciudad %></strong>
+		<light style= "font-family: Roboto Condensed, sans-serif"><%= @current_user.ciudad %></light>
 	</li>
   <li>
 		Pais:
-		<strong><%= @current_user.pais %></strong>
+		<light style= "font-family: Roboto Condensed, sans-serif"><%= @current_user.pais %></light>
 	</li>
 
   <li>
     Recibir Correos:
-    <strong><%= @current_user.receive_email %></strong>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= @current_user.receive_email %></light>
   </li>
 </ul>
 
 
-<p> <%= link_to "Edit", edit_profile_path, class:"btn btn-default btn-lg" %> </p>
-<p> <%= link_to "Edit Password", password_profile_path, class:"btn btn-default btn-lg" %> </p>
+<p style="display: inline-block"> <%= link_to "Edit", edit_profile_path, class:"btn btn-default btn-lg" %> </p>
+<p style="display: inline-block"> <%= link_to "Edit Password", password_profile_path, class:"btn btn-default btn-lg" %> </p>

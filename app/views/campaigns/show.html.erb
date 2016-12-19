@@ -1,5 +1,5 @@
 
-<h1 style= "font-family: Fjalla One, sans-serif; font-size: 50px; padding-bottom: 30px"><%=@campaign.titulo %></h1>
+<h1 style="font-size: 30px; font-family: Anton, sans-serif; color: #64A300" ><%=@campaign.titulo %></h1>
 <% if flash[:notice] %>
   <div style="background: yellow">
     <%= flash[:notice] %>
@@ -51,18 +51,20 @@
   </li>
   <li>
     Fecha culminacion:
-    <light style= "font-family: Roboto Condensed, sans-serif"><%= @campaign.finalizado_en %></light>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= format_date(@campaign.finalizado_en) %></light>
   </li>
   <li>
     Fecha creacion:
-    <light style= "font-family: Roboto Condensed, sans-serif"><%= @campaign.created_at %></light>
+    <light style= "font-family: Roboto Condensed, sans-serif"><%= format_date(@campaign.created_at)  %></light>
   </li>
 </ul>
 
-<p>
+<p style= "font-family: Fjalla One, sans-serif; font-size: 25px">
   Comentarios
 </p>
-<table border ="1" class="table table-hover" style=" width: 500px">
+
+<% if @campaign.comments.any? %>
+<table class="table table-hover" style="width:500px">
 	<thead>
 		<tr>
 			<th>Autor</th>
@@ -78,7 +80,7 @@
 				<tr>
 					<td><%= f.autor %></td>
 					<td><%= f.mensaje %></td>
-					<td><%= f.created_at %></td>
+					<td><%= format_date(f.created_at)  %></td>
           <% if current_user %>
               <% if current_user == User.find_by(name: f.autor) %>
 					       <td><%= link_to "Borrar", campaign_comment_path(f.campaign, f), method: :delete, data: {confirm: "Estas Seguro?"} %></td>
@@ -88,15 +90,18 @@
 			<%- end %>
 	</tbody>
 </table>
-
-<p> <%= link_to "New Comment", new_campaign_comment_path(@campaign.id), class:"btn btn-default btn-lg" %> </p>
+<% else %>
+  <p><em>No hay donations.</em></p>
+<% end %>
 
 <%= render partial: "campaign_donations", locals: {donations: @campaign.donations.order("created_at DESC")} %>
 
-<p> <%= link_to "New Donation", new_campaign_donation_path(@campaign.id), class:"btn btn-default btn-lg" %> </p>
+<p style="display: inline-block"> <%= link_to "New Donation", new_campaign_donation_path(@campaign.id), class:"btn btn-default btn-lg" %> </p>
+
+<p style="display: inline-block"> <%= link_to "New Comment", new_campaign_comment_path(@campaign.id), class:"btn btn-default btn-lg" %> </p>
 
 <% if current_user %>
   <% if current_user.id == @campaign.user_id %>
-    <p> <%= link_to "Edit", edit_campaign_path, class:"btn btn-default btn-lg" %> </p>
+    <p style="display: inline-block"> <%= link_to "Edit", edit_campaign_path, class:"btn btn-default btn-lg" %> </p>
   <% end %>
 <% end %>

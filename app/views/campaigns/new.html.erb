@@ -1,4 +1,4 @@
-<h1>New Campaign</h1>
+<h1 style="font-size: 30px; font-family: Anton, sans-serif; color: #64A300" >New Campaign</h1>
 <p> <em> Ingrese los datos necesarios: </em> </p>
 
 <% if @campaign.errors.any? %>
@@ -14,45 +14,47 @@
   </div>
 <% end %>
 
-<%= form_for @campaign do |f| %>
-  <p>
-    <%= f.label :titulo, "Titulo", class: "input-group"%>
-    <%= f.text_field :titulo, class: "form-control" %>
-  </p>
+<div style="width: 500px">
+  <%= form_for @campaign do |f| %>
+    <p>
+      <%= f.label :titulo, "Titulo", class: "input-group"%>
+      <%= f.text_field :titulo, class: "form-control" %>
+    </p>
 
-  <p>
-    <%= f.label :resena, "Resena", class: "input-group"  %>
-    <%= f.text_field :resena, class: "form-control" %>
-  </p>
+    <p>
+      <%= f.label :resena, "Resena", class: "input-group"  %>
+      <%= f.text_field :resena, class: "form-control" %>
+    </p>
 
-  <p>
-    <%= f.label :description , class: "input-group"%>
-    <%= f.text_area :description, class: "form-control"%>
-  </p>
+    <p>
+      <%= f.label :description , class: "input-group"%>
+      <%= f.text_area :description, class: "form-control"%>
+    </p>
 
-  <p>
-    <%= f.label :category , class: "input-group"%>
-    <%= f.select :category, Campaign.categories, class: "form-control"%>
-  </p>
+    <p>
+      <%= f.label :category , class: "input-group"%>
+      <%= f.select :category, Campaign.categories, class: "dropdown"%>
+    </p>
 
-  <p>
-    <%= f.label :meta, class: "input-group"%>
-    <%= f.number_field :meta, class: "form-control"%>
-  </p>
+    <p>
+      <%= f.label :meta, class: "input-group"%>
+      <%= f.number_field :meta, class: "form-control"%>
+    </p>
 
-  <p>
-    <%= f.label :image, "Imagen", class: "input-group" %>
-    <%= f.text_field :image, class: "form-control" %>
-  </p>
+    <p>
+      <%= f.label :image, "Imagen", class: "input-group" %>
+      <%= f.text_field :image, class: "form-control" %>
+    </p>
 
-  <p>
-    <%= f.label :finalizado_en, "Finaliza en", class: "input-group" %>
-    <%= f.date_field :finalizado_en, class: "form-control" %>
-  </p>
+    <p>
+      <%= f.label :finalizado_en, "Finaliza en", class: "input-group" %>
+      <%= f.date_field :finalizado_en, class: "form-control" %>
+    </p>
 
-  <p>
-    <%= f.submit "Crear", class:"btn btn-default btn-lg" %>
-    <%= link_to "Cancelar", campaigns_path, class:"btn btn-default btn-lg" %>
-  </p>
+    <p>
+      <%= f.submit "Crear", class:"btn btn-default btn-lg" %>
+      <%= link_to "Cancelar", campaigns_path, class:"btn btn-default btn-lg" %>
+    </p>
 
-<% end %>
+  <% end %>
+</div>
